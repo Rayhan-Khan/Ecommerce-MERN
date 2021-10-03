@@ -28,7 +28,6 @@ const userSchema=mongoose.Schema({
         type:String,
         required:true,
         trim:true,
-      
         lowercase:true
     },
     hash_password:{
@@ -51,7 +50,7 @@ const userSchema=mongoose.Schema({
 
 userSchema.virtual('fullname')
 .get(function(){
-    return this.firstName + " "+this.lastName;
+    return this.firstName +" "+this.lastName;
 });
 userSchema.methods={
     authenticate:async function(password){

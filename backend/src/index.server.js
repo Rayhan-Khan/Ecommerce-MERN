@@ -8,6 +8,7 @@ const categoryRoutes=require('./routes/category');
 const ProductRoutes=require("./routes/products");
 const cartRoutes=require('./routes/cart');
 const initialData=require('./routes/admin/initialData');
+const pageRouter=require('./routes/admin/page');
 const path=require('path');
 const cors=require('cors');
 
@@ -32,6 +33,7 @@ app.use('/api',categoryRoutes);
 app.use('/api',ProductRoutes);
 app.use('/api',cartRoutes);
 app.use('/api',initialData);
+app.use('/api',pageRouter)
 
 
 

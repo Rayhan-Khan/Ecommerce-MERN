@@ -67,3 +67,17 @@ exports.getProductBySlug = (req, res) => {
       }
     });
 };
+
+exports.getProductDetailsById = (req, res) => {
+  const { productId } = req.params;
+  if (productId) {
+    Product.findOne({ _id: productId }).exec((error, product) => {
+      if (error) return res.status(400).json({ error });
+      if (product) {
+       return res.status(200).json({ product });
+      }
+    });
+  } else {
+    return res.status(400).json({ error: "Params required" });
+  }
+};
