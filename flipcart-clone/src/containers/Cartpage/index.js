@@ -4,6 +4,8 @@ import './style.css'
 import Card from '../../components/Ui/Card'
 import Layout from '../../components/Layout'
 const CartPage = (props) => {
+    const cart =useSelector(state=>state.cart);
+    const cartItems=cart.cartItems;
     return(
         <Layout>
             <div className='cartConatiner'>
@@ -11,19 +13,24 @@ const CartPage = (props) => {
                 headerLeft={`My Cart`}
                 headerRight={<div> Deliver to</div>}
                 >
-                    <div className='flexrow'>
+                    {
+                        Object.keys(cartItems).map((key,index)=>
+                        <div key={index} className='flexrow'>
                         <div className='cartProductContainer'>
                             <img src=''/>
                         </div>
                         <div className='cartItemDetails'>
                             <div>
-                                product name
+                               {cartItems[key].name} -qty -{cartItems[key].qty}
                             </div>
                             <div>
                                 delevery in 3-5 days
                             </div>
                         </div>
                     </div>
+                        )
+                    }
+                    
                 </Card>
                 <Card 
                 style={{width:'500px'}}

@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { isUserLoggedIn } from './actions';
 import ProductDetailsPage from './containers/ProductDetailsPage';
 import CartPage from './containers/Cartpage';
+import { updateCart } from './actions/cart.action';
 
 function App() {
   const dispatch=useDispatch();
@@ -18,6 +19,10 @@ function App() {
       dispatch(isUserLoggedIn())
     }
   },[auth.authenticate]);
+
+  useEffect(() => {
+    dispatch(updateCart());
+  }, []);
   return (
     <div className="App">
       <Router>
